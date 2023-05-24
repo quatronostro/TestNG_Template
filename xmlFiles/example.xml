@@ -1,4 +1,7 @@
 
+<!-- This code just for the remember of how to use xml files and hierarchy.
+        If you want to use this change class related codes-->
+
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="IstenenClasslariCalistirma">

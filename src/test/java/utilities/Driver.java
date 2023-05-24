@@ -3,6 +3,7 @@ package utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -15,14 +16,16 @@ public class Driver {
     }
 
     public static WebDriver getDriver(){
-        String istenenBrowser = ConfigReader.getProperty("browser");
+        String whichBrowser = ConfigReader.getProperty("browser");
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary("C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe");
 
         if (driver == null){
 
-            switch (istenenBrowser){
-                case "opera":
-                    WebDriverManager.operadriver().setup();
-                    driver = new SafariDriver();
+            switch (whichBrowser){
+                case "brave":
+                    WebDriverManager.chromiumdriver().setup();
+                    driver = new ChromeDriver(options);
                     break;
                 case "edge":
                     WebDriverManager.edgedriver().setup();

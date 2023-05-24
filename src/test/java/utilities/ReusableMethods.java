@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class ReusableMethods {
+    //========Screenshot=====//
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
@@ -48,7 +49,7 @@ public class ReusableMethods {
         actions.moveToElement(element).perform();
     }
     //==========Return a list of string given a list of Web Element====////
-    public static List<String> stringListeCevir(List<WebElement> list) {
+    public static List<String> stringListConvert(List<WebElement> list) {
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : list) {
             if (!el.getText().isEmpty()) {
@@ -69,10 +70,10 @@ public class ReusableMethods {
         return elemTexts;
     }
     //   HARD WAIT WITH THREAD.SLEEP
-//   waitFor(5);  => waits for 5 second
-    public static void bekle(int saniye) {
+    //   waitFor(5);  => waits for 5 second
+    public static void wait(int second) {
         try {
-            Thread.sleep(saniye * 1000);
+            Thread.sleep(second * 1000L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -100,7 +101,7 @@ public class ReusableMethods {
                 element.click();
                 return;
             } catch (WebDriverException e) {
-                bekle(1);
+                wait(1);
             }
         }
     }

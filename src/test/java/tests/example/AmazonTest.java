@@ -14,12 +14,12 @@ public class AmazonTest {
         Driver.getDriver().get(ConfigReader.getProperty("amazonUrl"));
 
         AmazonPage amazonPage = new AmazonPage();
-        amazonPage.aramakutusu.sendKeys(ConfigReader.getProperty("amazonAranacakKelime") + Keys.ENTER);
+        amazonPage.searchBox.sendKeys(ConfigReader.getProperty("amazonSearchWord") + Keys.ENTER);
 
-        String expectedIcerik = ConfigReader.getProperty("amazonExpectedIcerik");
-        String actualSonucYazisi = amazonPage.aramaSonucuElementi.getText();
+        String expectedContent = ConfigReader.getProperty("amazonExpectedContent");
+        String actualResultText = amazonPage.searchResultElement.getText();
 
-        Assert.assertTrue(actualSonucYazisi.contains(expectedIcerik));
+        Assert.assertTrue(actualResultText.contains(expectedContent));
 
         Driver.closeDriver();
 
